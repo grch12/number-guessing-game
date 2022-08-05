@@ -3,7 +3,7 @@ import time
 import sys
 
 #判断参数数量
-if(len(sys.argv) < 2):
+if(len(sys.argv)  < 2):
     print('您没有提供次数限制。')
     exit(1)
 
@@ -51,7 +51,17 @@ while cont:
     cont = input('要继续吗？(Y/N)\n').lower() == 'y'
     print('-----------------')
 
+#过滤列表
+filted =  list(filter(lambda x: x[1], scores))
+if(len(filted) != 0):
+    best_score = min(filted, key=lambda x:x[2])[2]
+else:
+    best_score = 0
+
 #显示成绩
 for number, won, seconds in scores:
     won_text = '胜利' if won else '失败'
-    print(f'第{number}局 {won_text} 用时{seconds}')
+    label =  ''
+    if(won and seconds == best_score):
+        label = '[最佳]'
+    print(f'第{number}局 {won_text} 用时{seconds}{label}')
