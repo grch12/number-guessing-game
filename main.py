@@ -60,9 +60,9 @@ while cont:
     print('-----------------')
 
 #过滤列表
-filted = list(filter(lambda x: x[1], scores))
-if (len(filted) != 0):
-    best_score = min(filted, key=lambda x: x[2])[2]
+filtered = list(filter(lambda x: x[1], scores))
+if (len(filtered) != 0):
+    best_score = min(filtered, key=lambda x: x[2])[2]
 else:
     best_score = 0
 
